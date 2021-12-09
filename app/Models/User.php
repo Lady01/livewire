@@ -10,7 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-
+use Storage;
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -58,13 +58,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function tweets(){
+    public function tweet(){
         return $this->hasMany(Tweet::class);
     }
-    public function likes(){
-        return $this->hasMany(Like::class);
-    }
-    public function getPhotoAttribute(){
+    public function getPhotoAttribute()
+    {
         return $this->profile_photo_path;
     }
 }

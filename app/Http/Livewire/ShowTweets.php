@@ -27,7 +27,7 @@ class ShowTweets extends Component
         //dd(auth()->user()->tweets());
 
         $this->validate();
-        return auth()->user()->tweets()->create([
+        return auth()->user()->tweet()->create([
             'content' => $this->content,]);
         /*Tweet::create([
             'content' => $this->content,

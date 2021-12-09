@@ -25,11 +25,12 @@ class UploadPhoto extends Component
         $user = auth()->user();
         //Monta o nome do arquivo
         $nameFile = Str::Slug($user->name). '.' .$this->photo->getClientOriginalExtension();
-        
+        //dd($this->photo->storeAs('users', $nameFile));
         //Se retornar o path, o upload foi feito
         if($path = $this->photo->storeAs('users', $nameFile)){
+            //dd($this->photo->storeAs('users', $nameFile));
             $user->update([
-                'profile_photo_path'=>$path
+                'profile_photo_path'=>$path,
             ]);
             return redirect()->route('tweets.index');
         }
